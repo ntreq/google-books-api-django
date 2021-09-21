@@ -20,6 +20,6 @@ class BookSerializer(serializers.ModelSerializer):
     categories = serializers.StringRelatedField(many=True)
     class Meta:
         model = Book
-        fields = ['title', 'authors', 'published_date', 'categories',
+        fields = ['title', 'authors', 'publishedDate', 'categories',
                   'average_rating', 'ratings_count', 'thumbnail']
 

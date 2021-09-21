@@ -14,8 +14,8 @@ class BookListApiView(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     filter_backends = [filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend]
-    filterset_fields = ['published_date']
-    ordering_fields = ['published_date']
+    filterset_fields = ['publishedDate']
+    ordering_fields = ['publishedDate']
 
     def filter_queryset(self, queryset):
         queryset = super(BookListApiView, self).filter_queryset(queryset)
@@ -57,7 +57,7 @@ class BookCreateApiView(generics.CreateAPIView):
                     book_info = {
                         "api_id": item["id"],
                         "title": volume_info.get("title"),
-                        "published_date": volume_info.get("publishedDate")[:4],
+                        "publishedDate": volume_info.get("publishedDate")[:4],
                         "average_rating": volume_info.get("averageRating"),
                         "ratings_count": volume_info.get("ratingsCount"),
                     }

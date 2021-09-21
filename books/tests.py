@@ -17,7 +17,7 @@ class BookTestCase(TestCase):
 
         book = Book.objects.create(api_id="zxcvb", 
                             title="Ants",
-                            published_date=2005,
+                            publishedDate=2005,
                             average_rating=3.5,
                             ratings_count=10,
                             thumbnail="https://via.placeholder.com/350x150")
@@ -26,7 +26,7 @@ class BookTestCase(TestCase):
         book.categories.set([c1, c2])
         book2 = Book.objects.create(api_id="asdfg", 
                             title="Cooking",
-                            published_date=2021,
+                            publishedDate=2021,
                             average_rating=5,
                             ratings_count=3,
                             thumbnail="https://via.placeholder.com/350x150")
@@ -55,7 +55,7 @@ class BookTestCase(TestCase):
     def test_get_search(self):
         client = APIClient()
         book = Book.objects.get(id=1)
-        response = client.get(f'/api/books/?published_date={book.published_date}')
+        response = client.get(f'/api/books/?publishedDate={book.publishedDate}')
         response_data = json.loads(response.content)
         serializer = BookSerializer(book)
         self.assertEqual(*response_data, serializer.data)
@@ -71,7 +71,7 @@ class BookTestCase(TestCase):
     def test_sort_published_date_asc(self):
         client = APIClient()
         book = Book.objects.get(id=1)
-        response = client.get('/api/books/?sort=published_date')
+        response = client.get('/api/books/?sort=publishedDate')
         response_data = json.loads(response.content)[0]
         serializer = BookSerializer(book)
         self.assertEqual(response_data, serializer.data)
@@ -79,7 +79,7 @@ class BookTestCase(TestCase):
     def test_sort_published_date_desc(self):
         client = APIClient()
         book = Book.objects.get(id=2)
-        response = client.get('/api/books/?sort=-published_date')
+        response = client.get('/api/books/?sort=-publishedDate')
         response_data = json.loads(response.content)[0]
         serializer = BookSerializer(book)
         self.assertEqual(response_data, serializer.data)
