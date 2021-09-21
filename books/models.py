@@ -19,7 +19,7 @@ class Book(models.Model):
     api_id = models.CharField(max_length=255, null=False)
     title = models.CharField(max_length=255, null=False, blank=False)
     authors = models.ManyToManyField(Author)
-    publishedDate = models.PositiveSmallIntegerField(blank=False, null=True)
+    published_date = models.PositiveSmallIntegerField(blank=False, null=True)
     categories = models.ManyToManyField(Category, blank=True)
     average_rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     ratings_count = models.PositiveSmallIntegerField(blank=True, null=True)
