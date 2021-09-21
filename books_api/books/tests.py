@@ -84,8 +84,6 @@ class BookTestCase(TestCase):
         serializer = BookSerializer(book)
         self.assertEqual(response_data, serializer.data)
 
-
-
     def test_post_method(self):
         client = APIClient()
         response = client.post('/api/db/', {'q': 'war'}, format='json')
